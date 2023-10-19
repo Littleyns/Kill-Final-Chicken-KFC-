@@ -16,19 +16,15 @@ public class GameManager : MonoBehaviour
     public MapGenerator mapGenerator;
     // Start is called before the first frame update
 
-    void Awake()
-    {
-        GameCamera = GameObject.FindWithTag("GameCamera").GetComponent<Camera>();
-        cameraController = GameObject.FindWithTag("playerCamera");
-        MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        mapGenerator = GameObject.FindWithTag("Map").GetComponent<MapGenerator>();
-        gameManager = Resources.Load<GameObject>("GameManager");
-        playerObject = Resources.Load<GameObject>("[ PLAYER SIMPLE ]");
-    }
+
     void Start()
     {
 
+        GameCamera = GameObject.FindWithTag("GameCamera").GetComponent<Camera>();
+        MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        mapGenerator = GameObject.FindWithTag("Map").GetComponent<MapGenerator>();
         switchToUIView();
+
     }
 
     // Update is called once per frame
@@ -41,25 +37,23 @@ public class GameManager : MonoBehaviour
     {
         GameCamera.enabled = false;
         MainCamera.enabled = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void switchToGameView()
     {
         GameCamera.enabled = true;
         MainCamera.enabled = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void StartGame()
     {  
         mapGenerator.GenerateMap();
-        if (gameManager != null)
-        {
-            // Instancier le prefab dans la scène
-            GameObject nouvelObjet = Instantiate(gameManager);
-            GameObject newPlayer = Instantiate(playerObject, new Vector3(-6.390213f, 0, 157.5995f), Quaternion.identity);
-            cameraController.GetComponent<CamPivotController>().PlayerTarget = newPlayer.GetComponent<ThirdPersonController>();
-        }
       
         switchToGameView();
+
     }
 
 

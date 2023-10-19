@@ -44,13 +44,13 @@ public class MapGenerator : MonoBehaviour
                 }
                 if (z == 0)
                 {
-                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_A").gameObject;
+                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_D").gameObject;
                     GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.identity);
                     Destroy(door);
                 }
                 if (z == 2 + gameManager.Difficulty)
                 {
-                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_C").gameObject;
+                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_A").gameObject;
                     GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.identity);
                     Destroy(door);
                 }
