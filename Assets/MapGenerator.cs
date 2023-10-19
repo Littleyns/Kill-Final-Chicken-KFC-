@@ -29,7 +29,6 @@ public class MapGenerator : MonoBehaviour
 
                 // Instanciez la salle � la position (x, 0, z)
                 GameObject generatedRoom = Instantiate(room, new Vector3(x * roomSize, 0, z * roomSize), Quaternion.identity);
-
                 if(x==0)
                 {
                     GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_D").gameObject;
@@ -44,14 +43,14 @@ public class MapGenerator : MonoBehaviour
                 }
                 if (z == 0)
                 {
-                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_D").gameObject;
-                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.identity);
+                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_C").gameObject;
+                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.Euler(new Vector3(0,90,0)) );
                     Destroy(door);
                 }
                 if (z == 2 + gameManager.Difficulty)
                 {
                     GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_A").gameObject;
-                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.identity);
+                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)));
                     Destroy(door);
                 }
                 
