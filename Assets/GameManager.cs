@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int Score { get; set; }
     public int Difficulty { get; set; }
 
+    public RigidbodyConstraints originalConstraints;
     public MapGenerator mapGenerator;
     // Start is called before the first frame update
 
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
 
 
         playerObjectRb = playerObject.GetComponent<Rigidbody>();
+
+        originalConstraints = playerObjectRb.constraints;
         playerObjectRb.constraints = RigidbodyConstraints.FreezePositionY;
 
     }
@@ -60,7 +63,7 @@ public class GameManager : MonoBehaviour
         mapGenerator.GenerateMap();
       
         switchToGameView();
-        playerObjectRb.constraints &= ~RigidbodyConstraints.FreezePositionY;
+        playerObjectRb.constraints = originalConstraints;
 
     }
 
