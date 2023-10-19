@@ -190,6 +190,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   cameraController: {fileID: 0}
   playerObject: {fileID: 0}
+  playerObjectRb: {fileID: 0}
   mapGenerator: {fileID: 0}
 --- !u!1001 &245744421
 PrefabInstance:
@@ -331,7 +332,7 @@ PrefabInstance:
     - target: {fileID: 3243631560226216736, guid: 3f9896eb08ade7b4ab7b111e294279d4, type: 3}
       propertyPath: PlayerTarget
       value: 
-      objectReference: {fileID: 880418407}
+      objectReference: {fileID: 0}
     - target: {fileID: 3243631560226216737, guid: 3f9896eb08ade7b4ab7b111e294279d4, type: 3}
       propertyPath: m_Name
       value: CameraController
@@ -504,7 +505,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1705618651713529144, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705618651713529146, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1705618653073424580, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,6 +555,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[ PLAYER SIMPLE ]'
       objectReference: {fileID: 0}
+    - target: {fileID: 4200455611524812955, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
+      propertyPath: PlayerController
+      value: 
+      objectReference: {fileID: 880418407}
+    - target: {fileID: 4200455611524812955, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
+      propertyPath: VisualizationSettings.ResourcesPath
+      value: C:/Users/Younes srh/Desktop/I3/UnityProjet/KillFinalChicken/Assets/Julhiecio
+        TPS Controller/Editor/Editor Resources/GizmosModels/
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200455611524812955, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
+      propertyPath: VisualizationSettings.HandVisualizerMesh
+      value: 
+      objectReference: {fileID: -2013328763224876406, guid: bb3860e4e566300458934675c8d3e5a3, type: 3}
+    - target: {fileID: 4200455611524812955, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
+      propertyPath: VisualizationSettings.StepVisualizerMesh
+      value: 
+      objectReference: {fileID: -3964615163347849732, guid: 6b70b21f3295a7441b544a6f7bd820e9, type: 3}
+    - target: {fileID: 4200455611524812955, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
+      propertyPath: VisualizationSettings.HandVisualizerWireMesh
+      value: 
+      objectReference: {fileID: 5286559689909709851, guid: da6556561970af2438d2ae1aa6e84244, type: 3}
+    - target: {fileID: 4200455611524812955, guid: 75ef8f6559aa8a64c884f7992c14d580, type: 3}
+      propertyPath: VisualizationSettings.StepVisualizerWireMesh
+      value: 
+      objectReference: {fileID: -3964615163347849732, guid: 17be10cd01a532c44b8d1d89672b99cf, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

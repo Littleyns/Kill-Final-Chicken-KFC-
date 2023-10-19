@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     public Camera MainCamera;
     public GameObject gameManager;
     public GameObject cameraController;
+
     public GameObject playerObject;
+    public Rigidbody playerObjectRb;
     public string PlayerName { get; set; }
     public int Score { get; set; }
     public int Difficulty { get; set; }
@@ -23,7 +25,12 @@ public class GameManager : MonoBehaviour
         GameCamera = GameObject.FindWithTag("GameCamera").GetComponent<Camera>();
         MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         mapGenerator = GameObject.FindWithTag("Map").GetComponent<MapGenerator>();
+        playerObject = GameObject.FindWithTag("Player");
         switchToUIView();
+
+
+        playerObjectRb = playerObject.GetComponent<Rigidbody>();
+        playerObjectRb.constraints = RigidbodyConstraints.FreezePositionY;
 
     }
 
@@ -53,6 +60,7 @@ public class GameManager : MonoBehaviour
         mapGenerator.GenerateMap();
       
         switchToGameView();
+        playerObjectRb.constraints &= ~RigidbodyConstraints.FreezePositionY;
 
     }
 
