@@ -44,15 +44,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartGame()
-    {
+    {  
+        mapGenerator.GenerateMap();
         if (gameManager != null)
         {
             // Instancier le prefab dans la scène
             GameObject nouvelObjet = Instantiate(gameManager);
-            GameObject newPlayer = Instantiate(playerObject);
+            GameObject newPlayer = Instantiate(playerObject, );
             cameraController.GetComponent<CamPivotController>().PlayerTarget = newPlayer.GetComponent<ThirdPersonController>();
         }
-        mapGenerator.GenerateMap();
+      
         switchToGameView();
     }
 
