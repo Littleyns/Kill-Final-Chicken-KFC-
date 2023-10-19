@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         {
             // Instancier le prefab dans la scène
             GameObject nouvelObjet = Instantiate(gameManager);
-            GameObject newPlayer = Instantiate(playerObject, );
+            GameObject newPlayer = Instantiate(playerObject);
             cameraController.GetComponent<CamPivotController>().PlayerTarget = newPlayer.GetComponent<ThirdPersonController>();
         }
       
