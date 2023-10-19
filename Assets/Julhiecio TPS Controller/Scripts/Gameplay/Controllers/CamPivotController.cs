@@ -83,7 +83,7 @@ public class CamPivotController : MonoBehaviour
         StartCameraFOV = mCamera.fieldOfView;
 
         IsMobile = FindObjectOfType<GameManagerAndUI>().IsMobile;
-
+         //m
         StartTargetHeight = TargetHeight;
 
         if (PlayerTarget == null)
