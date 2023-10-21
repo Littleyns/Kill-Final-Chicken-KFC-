@@ -1,5 +1,57 @@
-*.png filter=lfs diff=lfs merge=lfs -text
-*.fbx filter=lfs diff=lfs merge=lfs -text
-*.wav filter=lfs diff=lfs merge=lfs -text
-Assets/killer/Ch15_nonPBR.fbx4 filter=lfs diff=lfs merge=lfs -text
-Assets/killer/Ch15_nonPBR.fbx filter=lfs diff=lfs merge=lfs -text
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TP3_MAUI.Views.vTemperature"
+             Title="vTemperature">
+    <StackLayout VerticalOptions="CenterAndExpand" Spacing="20" Margin="10">
+        <Button Text="Afficher" HorizontalOptions="CenterAndExpand" Clicked="Afficher_Clicked" />
+        <Label Text="Température" FontSize="Large" TextColor="{StaticResource Primary}" HorizontalOptions="CenterAndExpand" />
+        <Label x:Name="lbTemperature" HeightRequest="240" FontSize="Large" TextColor="{StaticResource Secondary}" HorizontalOptions="CenterAndExpand" />
+    </StackLayout>
+
+</ContentPage>
+
+
+
+
+namespace TP3_MAUI.Views;
+
+public partial class vTemperature : ContentPage
+{
+	public vTemperature()
+	{
+		InitializeComponent();
+	}
+
+	public void LireTemperatue()
+	{
+try
+{ 
+    using (HttpClient httpClient = new HttpClient())
+    {
+        HttpResponseMessage response = await httpClient.GetAsync(link);
+
+        if (response.IsSuccessStatusCode)
+        {
+            string rs = response.Content.ReadAsStringAsync().ToString();
+            string temp = rs.Substring(rs.IndexOf("<XMLDataResult>"), rs.IndexOf("</XMLDataResult>"));
+            lbTemperature.Text = temp;
+        }
+        else
+        {
+            await this.DisplayAlert("Error", "Erreur lors de la requête.", "OK");
+        }
+    }
+}
+catch (Exception ex)
+{
+    await this.DisplayAlert("Error", ex.Message, "OK");
+}
+
+	}
+
+    private void Afficher_Clicked(object sender, EventArgs e)
+    {
+		LireTemperatue();
+    }
+}

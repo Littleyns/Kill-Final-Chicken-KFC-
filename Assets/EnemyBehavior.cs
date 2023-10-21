@@ -9,12 +9,16 @@ public class EnemyBehavior : MonoBehaviour
     public bool isDead = false;
     private GameObject player;
     private bool isPlayerClose = false;
-
+    public Health enemyHealth;
+    public Score points;
     // Start is called before the first frame update
     void Start()
     {
         animator = this.GetComponent<Animator>();
         player = GameObject.Find("[ PLAYER SIMPLE ]");
+        enemyHealth = new Health();
+        points = new Score();
+        animator.SetBool("EnemyDeath", false);
     }
 
     // Update is called once per frame
@@ -22,12 +26,27 @@ public class EnemyBehavior : MonoBehaviour
     {
         //Atack 1 
         //Debug.Log(Vector3.Distance(this.transform.position, player.transform.position));
-        /*if(Vector3.Distance(this.transform.position, player.transform.position) < 0.9f){
-            //Debug.Log("Attack trigered");
-            animator.SetBool("beginAttack", true);
-            isPlayerClose = true;
-        }else
-            isPlayerClose = false;*/
+        if(Vector3.Distance(this.transform.position, player.transform.position) < 0.9f){
+
+            //Attack 2 
+                //Debug.Log("Attack trigered");
+                animator.SetBool("beginAttack", true);
+                isPlayerClose = true;
+            
+        }
+        else
+            animator.SetBool("beginAttack", false);
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (stateInfo.IsName("Falling Back Death") && stateInfo.normalizedTime >= 1.0f)
+        {
+            Destroy(this.gameObject);
+
+            // Update score when player kill enemy
+            points.UpdateScore();
+        }
+
     }
 
      private void OnCollisionEnter(Collision collision)
@@ -40,33 +59,49 @@ public class EnemyBehavior : MonoBehaviour
             GameObject otherObject = contact.otherCollider.gameObject;
             
             // Faites quelque chose avec l'autre objet
-            //Debug.Log("Collision avec : " + otherObject.name);
+            //Debug.Log("ENEMY Collision avec : " + otherObject.name);
 
             // Animation balle
             if(otherObject.name == "Bullet(Clone)"){
                 animator.SetBool("bulletBehavior", true);
-            }
 
-            //Attack 2 
-            if(otherObject.name == "[ PLAYER SIMPLE ]"){
-                //Debug.Log("Attack trigered");
-                animator.SetBool("beginAttack", true);
-                isPlayerClose = true;
-            }else
-                isPlayerClose = false;
+                // Dimunuer la vie
+                enemyHealth.TakeDamage(10);
             }
+            if (otherObject.name == "[ PLAYER SIMPLE ]")
+            {
+
+                player.GetComponent<ThirdPersonController>().Health -= 5;
+                Debug.Log(player.GetComponent<ThirdPersonController>().Health);
+            }
+        }
+        if (enemyHealth.health == 0)
+        {
+            animator.SetBool("beginAttack", false);
+            animator.SetBool("EnemyDeath", true);
+            Debug.Log("Enemy health : " + enemyHealth.health.ToString());
+        }
+
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
 
     }
 
     public void EndBulletBehavior(){
         animator.SetBool("bulletBehavior", false);
+        animator.SetBool("beginAttack", false);
     }
 
     public void IsAttackEnd(){
-        if(isPlayerClose){
-            //Debug.Log("Close");
-            animator.SetBool("LoopAttack", true);
+        if(!isPlayerClose){
+            animator.SetBool("beginAttack", false);
+            //Debug.Log(isPlayerClose);
         }
-            //Debug.Log("Not close");
+            //Debug.Log("Not close");*/
     }
+
+
 }
