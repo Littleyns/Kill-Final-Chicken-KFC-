@@ -102,6 +102,8 @@
     <Compile Include="Assets\Julhiecio TPS Controller\Scripts\Tools Components\FractureTool.cs" />
     <Compile Include="Assets\Julhiecio TPS Controller\Scripts\UI\UIMenssengerTrigger.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\DoorInteraction.cs" />
+    <Compile Include="Assets\PlayerManager.cs" />
     <Compile Include="Assets\Julhiecio TPS Controller\Scripts\Physics\Vehicle.cs" />
     <Compile Include="Assets\Julhiecio TPS Controller\Scripts\Additionals\ShootTargetMovement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
@@ -110,7 +112,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Julhiecio TPS Controller\Scripts\Physics\DestructibleObject.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Map.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
     <Compile Include="Assets\Julhiecio TPS Controller\Scripts\Tools Components\WeaponCreatorSettingsVisualizer.cs" />
     <Compile Include="Assets\Julhiecio TPS Controller\Scripts\Tools Components\CommentTool.cs" />

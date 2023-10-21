@@ -9,12 +9,14 @@ public class MapGenerator : MonoBehaviour
     public GameManager gameManager;
     public GameObject[,] map;
     public GameObject wall;
+    public GameObject door;
 
     void Start()
     {
         gameManager = GameObject.FindWithTag("Map").GetComponent<GameManager>();
         room1Prefab = Resources.Load("Room1") as GameObject;
         wall = Resources.Load("Wall_D") as GameObject;
+        door = Resources.Load("Interact_Door_A") as GameObject;
     }
 
     public void GenerateMap()
@@ -29,31 +31,9 @@ public class MapGenerator : MonoBehaviour
 
                 // Instanciez la salle � la position (x, 0, z)
                 GameObject generatedRoom = Instantiate(room, new Vector3(x * roomSize, 0, z * roomSize), Quaternion.identity);
-                if(x==0)
-                {
-                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_D").gameObject;
-                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.identity);
-                    Destroy(door);
-                }
-                if(x == 2 + gameManager.Difficulty)
-                {
-                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_B").gameObject;
-                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.identity);
-                    Destroy(door);
-                }
-                if (z == 0)
-                {
-                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_C").gameObject;
-                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.Euler(new Vector3(0,90,0)) );
-                    Destroy(door);
-                }
-                if (z == 2 + gameManager.Difficulty)
-                {
-                    GameObject door = generatedRoom.transform.Find("Doorways").Find("Doorway_A").gameObject;
-                    GameObject generatedWall = Instantiate(wall, door.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)));
-                    Destroy(door);
-                }
-                
+                ManageDoorWays(x, z, generatedRoom);
+              
+
 
                 generatedRoom.transform.SetParent(gameObject.transform);
                 map[x,z] = generatedRoom;
@@ -65,5 +45,48 @@ public class MapGenerator : MonoBehaviour
     GameObject GetRandomRoom()
     {
         return room1Prefab;
+    }
+
+    private void ManageDoorWays(int x, int z, GameObject generatedRoom)
+    {
+        GameObject doorwayA = generatedRoom.transform.Find("Doorways").Find("Doorway_A").gameObject;
+        GameObject doorwayB = generatedRoom.transform.Find("Doorways").Find("Doorway_B").gameObject;
+        GameObject doorwayC = generatedRoom.transform.Find("Doorways").Find("Doorway_C").gameObject;
+        GameObject doorwayD = generatedRoom.transform.Find("Doorways").Find("Doorway_D").gameObject;
+        if (x == 0)
+        {
+            GameObject generatedWall = Instantiate(wall, doorwayD.transform.position, Quaternion.identity);
+            Destroy(doorwayD);
+        }
+        if (x == 2 + gameManager.Difficulty)
+        {
+            GameObject generatedWall = Instantiate(wall, doorwayB.transform.position, Quaternion.identity);
+            Destroy(doorwayB);
+        }
+        if (z == 0)
+        {
+            GameObject generatedWall = Instantiate(wall, doorwayC.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)));
+            Destroy(doorwayC);
+        }
+        if (z == 2 + gameManager.Difficulty)
+        { 
+            GameObject generatedWall = Instantiate(wall, doorwayA.transform.position, Quaternion.Euler(new Vector3(0, 90, 0)));
+            Destroy(doorwayA);
+        }
+
+        if (x != 2 + gameManager.Difficulty)
+        {
+            Vector3 position = doorwayB.transform.position;
+
+            position.z += 1.23f;
+            GameObject generatedDoor = Instantiate(door, position, Quaternion.identity);
+           
+        }
+        if (z != 2 + gameManager.Difficulty)
+        {
+            Vector3 position = doorwayA.transform.position;
+            position.x += 1.23f;
+            GameObject generatedDoor = Instantiate(door, position, Quaternion.Euler(new Vector3(0, 90, 0)));
+        }
     }
 }
