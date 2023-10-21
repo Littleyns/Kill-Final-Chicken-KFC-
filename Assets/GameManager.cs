@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public Camera GameCamera;
     public Camera MainCamera;
-    public GameObject gameManager;
-    public GameObject cameraController;
 
+    public GameObject gameInfosUI;
+    public TextMeshProUGUI coinsValueTextMesh;
     public GameObject playerObject;
     public Rigidbody playerObjectRb;
+
+    public PlayerManager playerManager;
     public string PlayerName { get; set; }
     public int Score { get; set; }
     public int Difficulty { get; set; }
@@ -25,7 +27,6 @@ public class GameManager : MonoBehaviour
 
         GameCamera = GameObject.FindWithTag("GameCamera").GetComponent<Camera>();
         MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-        mapGenerator = GameObject.FindWithTag("Map").GetComponent<MapGenerator>();
         playerObject = GameObject.FindWithTag("Player");
         switchToUIView();
 
@@ -40,11 +41,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        coinsValueTextMesh.SetText(playerManager.coins.ToString());
     }
 
     public void switchToUIView()
     {
+        gameInfosUI.SetActive(false);
         GameCamera.enabled = false;
         MainCamera.enabled = true;
         Cursor.lockState = CursorLockMode.None;
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     }
     public void switchToGameView()
     {
+        gameInfosUI.SetActive(true);
         GameCamera.enabled = true;
         MainCamera.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {  
+        
         mapGenerator.GenerateMap();
       
         switchToGameView();
