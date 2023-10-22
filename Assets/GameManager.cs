@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinsValueTextMesh.SetText(playerManager.coins.ToString());
+        //coinsValueTextMesh.SetText(playerManager.coins.ToString());
     }
 
     public void switchToUIView()

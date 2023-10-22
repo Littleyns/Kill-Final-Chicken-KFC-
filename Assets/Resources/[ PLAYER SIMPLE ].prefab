@@ -1997,10 +1997,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.23077925
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: -0.000000044703484, y: 1, z: 0}
 --- !u!82 &1705618651713529147
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2128,7 +2128,7 @@ MonoBehaviour:
     m_Bits: 71681
   GroundCheckRadious: 0.1
   GroundCheckHeighOfsset: 0
-  GroundCheckSize: 0.5
+  GroundCheckSize: 1
   EnableStepCorrection: 1
   StepCorrectionMask:
     serializedVersion: 2
@@ -2214,15 +2214,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyOnStartGame: 0
-  PlayerController: {fileID: 0}
+  PlayerController: {fileID: 1705618651713529141}
   VisualizationSettings:
-    ResourcesPath: 
+    ResourcesPath: "C:/Users/C\xE9dric/Documents/git/Kill-Final-Chicken-KFC-/Assets/Julhiecio
+      TPS Controller/Editor/Editor Resources/GizmosModels/"
     GizmosColor: {r: 0, g: 0, b: 0, a: 0.5}
     WireGizmosColor: {r: 0.9, g: 0.4, b: 0.2, a: 0.5}
-    StepVisualizerMesh: {fileID: 0}
-    StepVisualizerWireMesh: {fileID: 0}
-    HandVisualizerMesh: {fileID: 0}
-    HandVisualizerWireMesh: {fileID: 0}
+    StepVisualizerMesh: {fileID: -3964615163347849732, guid: 6b70b21f3295a7441b544a6f7bd820e9, type: 3}
+    StepVisualizerWireMesh: {fileID: -3964615163347849732, guid: 17be10cd01a532c44b8d1d89672b99cf, type: 3}
+    HandVisualizerMesh: {fileID: -2013328763224876406, guid: bb3860e4e566300458934675c8d3e5a3, type: 3}
+    HandVisualizerWireMesh: {fileID: 5286559689909709851, guid: da6556561970af2438d2ae1aa6e84244, type: 3}
   StepCorrection: 1
   GroundCheck: 1
   WeaponsPositions: 1

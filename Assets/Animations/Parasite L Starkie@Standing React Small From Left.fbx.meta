@@ -82,7 +82,7 @@ ModelImporter:
           postInfinity: 2
           rotationOrder: 4
       events:
-      - time: 0.91851765
+      - time: 0.9166667
         functionName: EndBulletBehavior
         data: 
         objectReferenceParameter: {instanceID: 0}

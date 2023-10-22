@@ -131,7 +131,7 @@ public class ThirdPersonController : MonoBehaviour
         WeaponLayer = LayerMask.GetMask("Default", "Terrain", "Vehicle Mesh Collider", "Walls", "Weapon");
         WeaponInUse = null;
 
-        MyCamera = Camera.allCameras[0];
+        MyCamera = GameObject.FindWithTag("GameCamera").GetComponent<Camera>();
         MyPivotCamera = FindObjectOfType<CamPivotController>();
 
 
