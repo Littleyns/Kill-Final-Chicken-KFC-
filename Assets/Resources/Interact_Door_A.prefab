@@ -419,6 +419,8 @@ MonoBehaviour:
   buyDoorText: {fileID: 363589097478975376}
   buyDoorTextMesh: {fileID: 1017142486576015893}
   pm: {fileID: 0}
+  boxC: {fileID: 0}
+  isOpenPossible: 0
 --- !u!1001 &1307580741395089555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -493,6 +495,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: b4563137f6d477f448c50b09243268ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8458822450860202588}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: b4563137f6d477f448c50b09243268ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 155276438673586005}
   m_SourcePrefab: {fileID: 100100000, guid: b4563137f6d477f448c50b09243268ef, type: 3}
 --- !u!4 &1307580741394698771 stripped
 Transform:
@@ -570,3 +575,24 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!65 &155276438673586005
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307580741395058227}
+  m_Material: {fileID: 13400000, guid: 7538a0b55e2a1ad4389b7b48f04272f9, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8658843, y: 4.250226, z: 2.3255239}
+  m_Center: {x: 0.020128712, y: 2.1278458, z: -1.1382334}

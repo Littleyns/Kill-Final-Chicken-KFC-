@@ -18,6 +18,11 @@ TagManager:
   - GameManager
   - playerCamera
   - Enemy
+  - EnemyHealthBar
+  - NameText
+  - EnemyAttackHand
+  - BossAttackHand
+  - DoorCollider
   layers:
   - Default
   - TransparentFX
