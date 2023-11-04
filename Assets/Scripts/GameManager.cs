@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public RigidbodyConstraints originalConstraints;
     public MapGenerator mapGenerator;
+    public int minimunRoomNumber;
     // Start is called before the first frame update
 
 
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         originalConstraints = playerObjectRb.constraints;
         playerObjectRb.constraints = RigidbodyConstraints.FreezePositionY;
-
+        minimunRoomNumber = playerManager.minimunRoomNumber;
     }
 
     // Update is called once per frame

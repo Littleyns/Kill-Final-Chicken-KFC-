@@ -54,7 +54,7 @@ public class EnemyBehavior : MonoBehaviour
 
             // Update score when player kill enemy
             //points.UpdateScore();
-            pm.coins += 50;
+            pm.coins += 200;
         }
     }
 

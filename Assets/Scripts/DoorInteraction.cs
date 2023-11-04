@@ -40,19 +40,19 @@ public class DoorInteraction : MonoBehaviour
             }
             else
             {
-                isOpenPossible = (pm.completedRoom >= ((pm.gameManager.Difficulty + 3) * (pm.gameManager.Difficulty + 3))) ? true : false;
+                isOpenPossible = (pm.completedRoom == -1 + ((pm.gameManager.Difficulty + pm.minimunRoomNumber) * (pm.gameManager.Difficulty + pm.minimunRoomNumber))) ? true : false;
 
             }
+            if (pm.coins < price)
+            {
+                buyDoorTextMesh.color = new Color(1.0f, 0.0f, 0.0f);
+            }
 
-            if(isOpenPossible)
+            if (isOpenPossible)
             {
                 if (pm.coins >= price)
                 {
                     buyDoorTextMesh.color = new Color(0.0f, 1.0f, 0.0f);
-                }
-                else
-                {
-                    buyDoorTextMesh.color = new Color(1.0f, 0.0f, 0.0f);
                 }
                 if (doorOpen == false)
                 {

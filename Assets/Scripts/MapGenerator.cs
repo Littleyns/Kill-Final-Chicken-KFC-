@@ -25,11 +25,11 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateMap()
     {
-        map = new GameObject[2 + (gameManager.Difficulty), 2 + (gameManager.Difficulty)];
-        for (int x = 0; x < 2+ gameManager.Difficulty; x++)
+        map = new GameObject[gameManager.minimunRoomNumber + (gameManager.Difficulty), gameManager.minimunRoomNumber + (gameManager.Difficulty)];
+        for (int x = 0; x < gameManager.minimunRoomNumber  + gameManager.Difficulty; x++)
         {
             float cubeX = -5 + (x * roomSize);
-            for (int z = 0; z < 2+ gameManager.Difficulty; z++)
+            for (int z = 0; z < gameManager.minimunRoomNumber + gameManager.Difficulty; z++)
             {
                 // Choisissez une salle en fonction de la difficult�
                 GameObject room = GetRandomRoom();

@@ -23,6 +23,7 @@ TagManager:
   - EnemyAttackHand
   - BossAttackHand
   - DoorCollider
+  - meshColor
   layers:
   - Default
   - TransparentFX

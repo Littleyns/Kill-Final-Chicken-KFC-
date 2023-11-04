@@ -41,19 +41,19 @@ public class col : MonoBehaviour
             if (otherObject.name == "Floor_B" && GameObject.FindWithTag("Enemy") == null)
             {
                 GameObject roomParent = otherObject.transform.parent.gameObject.transform.parent.gameObject;
-                for (int x = 0; x < 3 + gameManager.Difficulty; x++)
+                for (int x = 0; x < 2 + gameManager.Difficulty; x++)
                 {
                     float posX = -8 + (x * 29);
-                    for (int z = 0; z < 3 + gameManager.Difficulty; z++)
+                    for (int z = 0; z < 2 + gameManager.Difficulty; z++)
                     {
                         float posZ = 165 + (z * 29);
-                        if (x == 3 + gameManager.Difficulty - 1 && z == 3 + gameManager.Difficulty - 1)
+                        if (x == 2 + gameManager.Difficulty - 1 && z == 2 + gameManager.Difficulty - 1)
                         {
                             Instantiate(boss, new Vector3(posX, 1f, posZ), Quaternion.identity);
                         }
                         else
                         {
-                            for (int i = 0; i < 4 + gameManager.Difficulty; i++)
+                            for (int i = 0; i < 1 + gameManager.Difficulty; i++)
                             {
 
                                 Instantiate(enemy, new Vector3(posX, 0.5f, posZ), Quaternion.identity);

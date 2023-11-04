@@ -12,12 +12,13 @@ public class PlayerManager : MonoBehaviour
     private TextMeshProUGUI CoinsValueTextMesh;
     private TextMeshProUGUI CompletedRoomValueTextMesh;
     public GameManager gameManager;
+    public int minimunRoomNumber = 2;
     // Start is called before the first frame update
     private void Awake()
     {
         //health = 100;
         coins = 0;
-        completedRoom = 0;
+        completedRoom = 1;
     }
     void Start()
     {
@@ -30,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         CoinsValueTextMesh.SetText(""+coins);
-        CompletedRoomValueTextMesh.SetText(completedRoom + "/" + ((3 + gameManager.Difficulty) * (3 + gameManager.Difficulty)));
+        CompletedRoomValueTextMesh.SetText(completedRoom + "/" + ((minimunRoomNumber + gameManager.Difficulty) * (minimunRoomNumber + gameManager.Difficulty)));
     }
 
     public bool pay(int c)
